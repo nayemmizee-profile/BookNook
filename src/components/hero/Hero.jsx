@@ -1,10 +1,12 @@
+import { Suspense } from "react";
 import HeroSlider from "./heroClient";
 
-export default async function Hero() {
-  let books = [];
+// API থেকে ডেটা আনার Component
+async function HeroData() {
+  let books;
 
   try {
-    const response = await fetch("http://localhost:9000/AllBooks", {
+    const response = await fetch(`${process.env.API_URL}/AllBooks`, {
       cache: "no-store",
     });
 
@@ -14,10 +16,31 @@ export default async function Hero() {
 
     const data = await response.json();
 
-    books = Array.isArray(data) ? data : data.books || data.data || [];
+    books = data;
   } catch (error) {
-    console.error("Hero books fetch error:", error);
+    console.error("Books fetching error:", error);
   }
 
   return <HeroSlider books={books} />;
+}
+
+// Loading UI
+function HeroLoading() {
+  return (
+    <section className="flex min-h-[500px] items-center justify-center">
+      <div className="text-center">
+        <div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-gray-300 border-t-teal-500" />
+        <p className="mt-4 text-gray-500">Loading featured books...</p>
+      </div>
+    </section>
+  );
+}
+
+// Main Hero Component
+export default function Hero() {
+  return (
+    <Suspense fallback={<HeroLoading />}>
+      <HeroData />
+    </Suspense>
+  );
 }

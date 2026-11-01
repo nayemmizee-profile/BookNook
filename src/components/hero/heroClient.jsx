@@ -68,7 +68,7 @@ export default function HeroSlider({ books = [] }) {
         description:
           book.description ||
           "Discover this wonderful book and explore a new world of ideas.",
-        image: book.coverImage || "",
+        image: book.image || "",
         rating: book.rating || book.averageRating || null,
       }));
   }, [books]);
@@ -252,7 +252,7 @@ export default function HeroSlider({ books = [] }) {
                                   alt={book.title}
                                   fill
                                   sizes="110px"
-                                  unoptimized
+                                  optimized
                                 />
                               ) : (
                                 <span className="bn-cover-placeholder">

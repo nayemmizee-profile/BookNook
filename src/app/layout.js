@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Geist, Geist_Mono } from "next/font/google";
+import { ReadingListProvider } from "../../Context/ReadingListContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,8 +25,10 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        {children}
+        <ReadingListProvider>
+          <Navbar />
+          {children}
+        </ReadingListProvider>
       </body>
     </html>
   );
