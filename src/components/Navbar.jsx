@@ -50,7 +50,7 @@ export default function Navbar({ user = null, onLogout }) {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[#D9B56D]/20 bg-[#102A43]/95 text-[#F7F1E5] shadow-lg shadow-[#102A43]/10 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-[#D9B56D]/20 bg-[#102A43]/95 text-[#F7F1E5] shadow-lg shadow-[#102A43]/10 backdrop-blur-2xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8 lg:px-10">
         {/* Logo */}
         <Link href="/" className="group flex shrink-0 items-center gap-3">
