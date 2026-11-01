@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import {
   ChevronDown,
   LayoutDashboard,
@@ -10,7 +11,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const publicLinks = [
@@ -24,13 +25,45 @@ const privateLinks = [
   { name: "My Borrows", href: "/my-borrows" },
 ];
 
-export default function Navbar({ user = null, onLogout }) {
+export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Better Auth Session
+  const { data: session, isPending } = authClient.useSession();
+
+  // Logged-in User
+  const user = session?.user || null;
+
+  const isLoggedIn = Boolean(user);
+
+  const handleLogout = async () => {
+    try {
+      console.log("Logging out...");
+
+      const { error } = await authClient.signOut();
+
+      if (error) {
+        console.error("Logout Error:", error);
+        return;
+      }
+
+      console.log("Logout successful!");
+
+      router.push("/login");
+      router.refresh();
+    } catch (error) {
+      console.error("Logout Failed:", error);
+    }
+  };
+
+  useEffect(() => {
+    console.log("Current Session:", session);
+    console.log("Logged In User:", user);
+  }, [session, user]);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-
-  const isLoggedIn = Boolean(user);
 
   const navLinks = isLoggedIn ? [...publicLinks, ...privateLinks] : publicLinks;
 
@@ -92,21 +125,13 @@ export default function Navbar({ user = null, onLogout }) {
 
         {/* Desktop Auth / Profile */}
         <div className="hidden items-center gap-3 lg:flex">
-          {!isLoggedIn ? (
+          {isPending ? (
+            <p className="text-sm text-[#D9B56D]">Loading...</p>
+          ) : !isLoggedIn ? (
             <>
-              <Link
-                href="/login"
-                className="rounded-lg px-4 py-2 text-sm font-medium text-[#F7F1E5] transition hover:text-[#D9B56D]"
-              >
-                Login
-              </Link>
+              <Link href="/login">Login</Link>
 
-              <Link
-                href="/register"
-                className="rounded-lg border border-[#D9B56D] bg-[#D9B56D] px-5 py-2.5 text-sm font-semibold text-[#102A43] transition duration-300 hover:bg-transparent hover:text-[#D9B56D]"
-              >
-                Join the Library
-              </Link>
+              <Link href="/register">Join the Library</Link>
             </>
           ) : (
             <div className="relative">
@@ -139,7 +164,7 @@ export default function Navbar({ user = null, onLogout }) {
                   </Link>
 
                   <button
-                    onClick={onLogout}
+                    onClick={handleLogout}
                     className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm text-red-300 transition hover:bg-red-500/10"
                   >
                     <LogOut size={17} />
@@ -214,7 +239,7 @@ export default function Navbar({ user = null, onLogout }) {
               </Link>
 
               <button
-                onClick={onLogout}
+                onClick={handleLogout}
                 className="flex items-center gap-2 rounded-lg px-4 py-3 text-left text-sm text-red-300 hover:bg-red-500/10"
               >
                 <LogOut size={17} />

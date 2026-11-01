@@ -15,7 +15,6 @@ async function NewArrivalsContent() {
 
     const data = await response.json();
     books = data;
-    console.log(data || []);
   } catch (error) {
     console.error("Book fetching error:", error);
   }
