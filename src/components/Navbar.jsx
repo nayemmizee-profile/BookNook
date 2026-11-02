@@ -129,9 +129,19 @@ export default function Navbar() {
             <p className="text-sm text-[#D9B56D]">Loading...</p>
           ) : !isLoggedIn ? (
             <>
-              <Link href="/login">Login</Link>
+              <Link
+                href="/login"
+                className="hover:text-blue-800 hover:py-1.5 px-4 hover:bg-blue-100 rounded-2xl "
+              >
+                Login
+              </Link>
 
-              <Link href="/register">Join the Library</Link>
+              <Link
+                href="/register"
+                className="py-2.5 px-4  b-2 bg-blue-600 hover:bg-emerald-700 rounded-2xl "
+              >
+                Join the Library
+              </Link>
             </>
           ) : (
             <div className="relative">
