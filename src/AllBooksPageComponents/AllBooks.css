@@ -1,0 +1,394 @@
+.latest-books-section {
+  padding: 100px 24px;
+  background: #080d12;
+  color: #f1f5f9;
+  min-height: 100vh;
+}
+
+.latest-books-container {
+  max-width: 1450px;
+  margin: 0 auto;
+}
+
+.latest-books-heading {
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.latest-heading-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #16c7a0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 20px;
+}
+
+.latest-books-heading h2 {
+  font-size: clamp(38px, 5vw, 65px);
+  font-weight: 900;
+  letter-spacing: -2px;
+  margin-bottom: 15px;
+}
+
+.latest-books-heading h2 strong {
+  color: #16c7a0;
+}
+
+.latest-books-heading > p {
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.latest-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.latest-stats > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #111c25;
+  border: 1px solid #243642;
+  padding: 14px 20px;
+  border-radius: 12px;
+  color: #16c7a0;
+}
+
+.latest-stats span {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.latest-stats strong {
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.latest-books-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.latest-book-card {
+  background: #101922;
+  border: 1px solid #263744;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: 0.35s ease;
+  animation: latestFade 0.6s ease both;
+  animation-delay: calc(var(--card-index) * 45ms);
+}
+
+.latest-book-card:hover {
+  transform: translateY(-8px);
+  border-color: #16c7a0;
+  box-shadow: 0 20px 50px #0008;
+}
+
+.latest-book-cover {
+  position: relative;
+  height: 270px;
+  overflow: hidden;
+  background: #172630;
+}
+
+.latest-cover-image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.latest-book-card:hover .latest-cover-image {
+  transform: scale(1.06);
+}
+
+.latest-category,
+.latest-number {
+  position: absolute;
+  top: 15px;
+  z-index: 2;
+  padding: 7px 12px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.latest-category {
+  left: 15px;
+  background: #16c7a0;
+  color: #06140f;
+}
+
+.latest-number {
+  right: 15px;
+  background: #080d12dd;
+  color: white;
+}
+
+.latest-book-details {
+  padding: 23px;
+}
+
+.latest-book-title {
+  margin-bottom: 18px;
+}
+
+.latest-book-title h3 {
+  font-size: 21px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: #f8fafc;
+}
+
+.latest-book-title > span {
+  font-size: 13px;
+  color: #16c7a0;
+}
+
+.latest-description {
+  min-height: 65px;
+  margin-bottom: 20px;
+}
+
+.latest-description p {
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.latest-info-box {
+  background: #17232d;
+  border: 1px solid #293c48;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.latest-info-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #16c7a0;
+  font-size: 12px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.latest-info-box > p {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+
+.latest-email {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.latest-book-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 15px 0;
+}
+
+.latest-book-meta > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: #16c7a0;
+}
+
+.latest-book-meta section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.latest-book-meta section span {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.latest-book-meta section strong {
+  color: #dbeafe;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.latest-card-footer {
+  border-top: 1px solid #293c48;
+  padding-top: 17px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.latest-card-footer > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.latest-card-index {
+  color: #16c7a0;
+  font-weight: 800;
+}
+
+.latest-empty {
+  text-align: center;
+  padding: 90px 20px;
+  color: #94a3b8;
+}
+
+.latest-empty svg {
+  color: #16c7a0;
+  margin-bottom: 15px;
+}
+
+.latest-empty h3 {
+  color: white;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.latest-book-skeleton {
+  background: #101922;
+  border-radius: 18px;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+.skeleton-cover {
+  height: 270px;
+  background: #1e303b;
+  animation: skeletonPulse 1.5s infinite;
+}
+
+.skeleton-details {
+  padding: 20px;
+}
+
+.skeleton-details div {
+  height: 13px;
+  border-radius: 5px;
+  margin-bottom: 14px;
+  background: #263744;
+  animation: skeletonPulse 1.5s infinite;
+}
+
+.skeleton-details div:nth-child(2) {
+  width: 70%;
+}
+
+.skeleton-details div:nth-child(3) {
+  width: 45%;
+}
+
+@keyframes skeletonPulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes latestFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1050px) {
+  .latest-books-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .latest-books-section {
+    padding: 65px 15px;
+  }
+
+  .latest-books-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .latest-books-heading {
+    margin-bottom: 40px;
+  }
+
+  .latest-book-cover {
+    height: 300px;
+  }
+
+  .latest-stats {
+    flex-direction: column;
+  }
+
+  .latest-stats > div {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .latest-book-card {
+    animation: none;
+    transition: none;
+  }
+}
+
+.latest-view-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 13px 17px;
+  margin-top: 12px;
+
+  background: linear-gradient(110deg, #16c7a0, #0e9f85);
+
+  color: #06140f;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.latest-view-details:hover {
+  background: #22e6bd;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px #16c7a044;
+}
+
+.latest-view-details svg {
+  transition: transform 0.3s ease;
+}
+
+.latest-view-details:hover svg {
+  transform: translate(3px, -3px);
+}

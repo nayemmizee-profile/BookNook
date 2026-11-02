@@ -99,7 +99,7 @@ const BookList = ({ books = [] }) => {
         <div className="see-all-wrapper">
           <div className="see-all-line" />
 
-          <Link href="/AllBooks" className="see-all-btn">
+          <Link href="/books" className="see-all-btn">
             See All Books
             <ArrowRight size={19} />
           </Link>
