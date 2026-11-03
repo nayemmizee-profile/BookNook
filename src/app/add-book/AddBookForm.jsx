@@ -15,6 +15,7 @@ import {
   Mail,
   UserRound,
 } from "lucide-react";
+import Image from "next/image";
 
 export default function AddBookForm({ user }) {
   const router = useRouter();
@@ -66,7 +67,7 @@ export default function AddBookForm({ user }) {
       // Prepare book data
       const bookData = {
         ...formData,
-        quantity: Number(formData.quantity),
+        totalCopies: Number(formData.totalCopies),
 
         userName: user?.name,
         userEmail: user?.email,
@@ -109,7 +110,7 @@ export default function AddBookForm({ user }) {
 
       // Navigate after success
       setTimeout(() => {
-        router.push(`/books/${result.bookId}`);
+        router.push(`/books/${result._Id}`);
         router.refresh();
       }, 1500);
     } catch (error) {
@@ -315,9 +316,11 @@ export default function AddBookForm({ user }) {
                     Image Preview
                   </p>
 
-                  <img
+                  <Image
                     src={formData.image}
                     alt="Book cover preview"
+                    width={100}
+                    height={100}
                     className="mx-auto max-h-64 rounded-xl object-contain"
                     onError={(e) => {
                       e.currentTarget.style.display = "none";

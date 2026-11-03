@@ -1,7 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Suspense } from "react";
-import { ReadingListProvider } from "../../Context/ReadingListContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,13 +25,11 @@ export default function RootLayout({ children }) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <ReadingListProvider>
-          <Suspense fallback={<div className="h-20 w-full" />}>
-            <Navbar />
-          </Suspense>
+        <Suspense fallback={<div className="h-20 w-full" />}>
+          <Navbar />
+        </Suspense>
 
-          {children}
-        </ReadingListProvider>
+        {children}
       </body>
     </html>
   );

@@ -1,16 +1,24 @@
-import AllBooksPageUI from "@/AllBooksPageComponents/AllBooksPage_UI";
+import { connection } from "next/server";
 import { Suspense } from "react";
 
+import AllBooksPageUI from "@/AllBooksPageComponents/AllBooksPage_UI";
+
 async function AllBooksData() {
+  await connection();
+
   let books = [];
 
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/AllBooks`,
-      {
-        cache: "no-store",
-      },
-    );
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+    if (!apiUrl) {
+      throw new Error("API URL is missing");
+    }
+
+    const response = await fetch(`${apiUrl.replace(/\/$/, "")}/AllBooks`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(15000),
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);
@@ -18,20 +26,20 @@ async function AllBooksData() {
 
     const data = await response.json();
 
-    books = Array.isArray(data) ? data : data.books || data.data || [];
+    books = Array.isArray(data) ? data : data?.books || data?.data || [];
   } catch (error) {
-    console.error("Latest books fetching error:", error);
+    console.error("All Books fetching error:", error);
   }
 
   return <AllBooksPageUI books={books} />;
 }
 
-// Loading UI
 function BooksLoading() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="text-center">
         <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-gray-300 border-t-blue-600" />
+
         <p className="mt-4 text-gray-500">Loading books...</p>
       </div>
     </div>

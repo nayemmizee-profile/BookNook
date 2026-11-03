@@ -1,56 +1,60 @@
 "use client";
 
-import { CheckCircle2, X, XCircle } from "lucide-react";
+import { Check, Sparkles, X, XCircle } from "lucide-react";
 import { useEffect } from "react";
+import "./Toast.css";
 
 export default function CustomToast({ message, type = "success", onClose }) {
+  const isSuccess = type === "success";
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      onClose();
-    }, 2500);
+      onClose?.();
+    }, 3500);
 
     return () => clearTimeout(timer);
   }, [onClose]);
 
-  const isSuccess = type === "success";
-
   return (
-    <div className="fixed right-5 top-5 z-[9999] w-[calc(100%-40px)] max-w-sm animate-in slide-in-from-right-5 fade-in duration-300">
-      <div className="flex items-start gap-3 rounded-2xl border border-white/20 bg-[#102A43] p-4 text-white shadow-2xl">
-        <div
-          className={`rounded-xl p-2 ${
-            isSuccess ? "bg-emerald-500/20" : "bg-red-500/20"
-          }`}
-        >
-          {isSuccess ? (
-            <CheckCircle2 className="h-6 w-6 text-emerald-400" />
-          ) : (
-            <XCircle className="h-6 w-6 text-red-400" />
-          )}
+    <div className={`custom-toast ${isSuccess ? "success" : "error"}`}>
+      <div className="toast-card">
+        <div className="toast-glow" />
+
+        <div className="toast-icon-area">
+          <div className="toast-orbit" />
+
+          <div className="toast-icon">
+            {isSuccess ? (
+              <Check size={24} strokeWidth={3} />
+            ) : (
+              <XCircle size={24} />
+            )}
+          </div>
         </div>
 
-        <div className="flex-1">
-          <h3 className="font-bold">
-            {isSuccess ? "Success!" : "Something went wrong"}
-          </h3>
+        <div className="toast-content">
+          <div className="toast-heading">
+            <span>{isSuccess ? "SUCCESS" : "ERROR"}</span>
+            {isSuccess && <Sparkles size={15} className="toast-sparkle" />}
+          </div>
 
-          <p className="mt-1 text-sm text-slate-300">{message}</p>
+          <h3>{isSuccess ? "Well done!" : "Something went wrong!"}</h3>
+
+          <p>{message}</p>
         </div>
 
         <button
+          className="toast-close"
           onClick={onClose}
-          className="text-slate-400 transition hover:text-white"
           aria-label="Close notification"
         >
-          <X size={18} />
+          <X size={17} />
         </button>
-      </div>
 
-      <div
-        className={`h-1 origin-left animate-[toast-progress_3.5s_linear_forwards] ${
-          isSuccess ? "bg-emerald-400" : "bg-red-400"
-        }`}
-      />
+        <div className="toast-progress-track">
+          <div className="toast-progress" />
+        </div>
+      </div>
     </div>
   );
 }

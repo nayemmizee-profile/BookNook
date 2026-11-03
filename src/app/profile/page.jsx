@@ -1,9 +1,10 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
 import ProfileClient from "./ProfileUI";
 
-export default async function ProfilePage() {
+async function ProfileContent() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -26,5 +27,13 @@ export default async function ProfilePage() {
         updatedAt: user.updatedAt?.toISOString?.() ?? null,
       }}
     />
+  );
+}
+
+export default function ProfilePage() {
+  return (
+    <Suspense fallback={<div>Loading profile...</div>}>
+      <ProfileContent />
+    </Suspense>
   );
 }
