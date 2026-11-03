@@ -5,9 +5,12 @@ async function NewArrivalsContent() {
   let books;
 
   try {
-    const response = await fetch(`${process.env.API_URL}/AllBooks`, {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/AllBooks`,
+      {
+        cache: "no-store",
+      },
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP Error: ${response.status}`);

@@ -252,7 +252,7 @@ export default function HeroSlider({ books = [] }) {
                                   alt={book.title}
                                   fill
                                   sizes="110px"
-                                  optimized
+                                  unoptimized
                                 />
                               ) : (
                                 <span className="bn-cover-placeholder">

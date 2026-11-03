@@ -21,9 +21,12 @@ async function BookDetailsContent({ params }) {
   let book;
 
   try {
-    const response = await fetch(`${process.env.API_URL}/AllBooks/${id}`, {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/AllBooks/${id}`,
+      {
+        cache: "no-store",
+      },
+    );
 
     if (response.status === 404) {
       notFound();

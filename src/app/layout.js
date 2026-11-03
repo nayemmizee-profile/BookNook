@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
 import { ReadingListProvider } from "../../Context/ReadingListContext";
 import "./globals.css";
 
@@ -15,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "BookNook",
-  description: " A Small Online Library",
+  description: "A Small Online Library",
 };
 
 export default function RootLayout({ children }) {
@@ -26,7 +27,10 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <ReadingListProvider>
-          <Navbar />
+          <Suspense fallback={<div className="h-20 w-full" />}>
+            <Navbar />
+          </Suspense>
+
           {children}
         </ReadingListProvider>
       </body>
