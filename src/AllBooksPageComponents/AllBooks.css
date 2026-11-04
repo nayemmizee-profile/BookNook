@@ -1,7 +1,7 @@
 .latest-books-section {
   padding: 100px 24px;
-  background: #080d12;
-  color: #f1f5f9;
+  background: #fafcfa;
+  color: #0e0e0f;
   min-height: 100vh;
 }
 
@@ -19,26 +19,26 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  color: #16c7a0;
-  font-size: 12px;
+  color: #48007c;
+  font-size: 30px;
   font-weight: 800;
   letter-spacing: 3px;
   margin-bottom: 20px;
 }
 
 .latest-books-heading h2 {
-  font-size: clamp(38px, 5vw, 65px);
+  font-size: clamp(28px, 5vw, 58px);
   font-weight: 900;
   letter-spacing: -2px;
   margin-bottom: 15px;
 }
 
 .latest-books-heading h2 strong {
-  color: #16c7a0;
+  color: #1bea08;
 }
 
 .latest-books-heading > p {
-  color: #94a3b8;
+  color: #131313;
   font-size: 15px;
   line-height: 1.8;
 }
@@ -55,20 +55,20 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #111c25;
-  border: 1px solid #243642;
+  background: #eff1f3;
+  border: 1px solid #03ee36;
   padding: 14px 20px;
   border-radius: 12px;
-  color: #16c7a0;
+  color: #16c745;
 }
 
 .latest-stats span {
-  color: #94a3b8;
+  color: #0b0d0f;
   font-size: 13px;
 }
 
 .latest-stats strong {
-  color: #f8fafc;
+  color: #1bfb23;
   font-size: 14px;
 }
 
@@ -79,8 +79,8 @@
 }
 
 .latest-book-card {
-  background: #101922;
-  border: 1px solid #263744;
+  background: #e5e8eb;
+  border: 3px solid #1ad305;
   border-radius: 18px;
   overflow: hidden;
   transition: 0.35s ease;
@@ -90,7 +90,7 @@
 
 .latest-book-card:hover {
   transform: translateY(-8px);
-  border-color: #16c7a0;
+  border-color: #13e604;
   box-shadow: 0 20px 50px #0008;
 }
 
@@ -98,7 +98,7 @@
   position: relative;
   height: 270px;
   overflow: hidden;
-  background: #172630;
+  background: #d6dde2;
 }
 
 .latest-cover-image {
@@ -146,12 +146,12 @@
   font-weight: 800;
   margin-bottom: 8px;
   line-height: 1.4;
-  color: #f8fafc;
+  color: #07090a;
 }
 
 .latest-book-title > span {
-  font-size: 13px;
-  color: #16c7a0;
+  font-size: 16px;
+  color: #383737;
 }
 
 .latest-description {
@@ -160,14 +160,14 @@
 }
 
 .latest-description p {
-  color: #94a3b8;
+  color: #565a61;
   font-size: 13px;
   line-height: 1.8;
 }
 
 .latest-info-box {
-  background: #17232d;
-  border: 1px solid #293c48;
+  background: #feffff;
+  border: 1px solid #09e126;
   border-radius: 12px;
   padding: 15px;
   margin-bottom: 20px;
@@ -177,7 +177,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #16c7a0;
+  color: #06f20a;
   font-size: 12px;
   font-weight: 800;
   margin-bottom: 10px;
@@ -209,7 +209,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  color: #16c7a0;
+  color: #01120e;
 }
 
 .latest-book-meta section {
@@ -221,13 +221,13 @@
 
 .latest-book-meta section span {
   font-size: 11px;
-  color: #64748b;
+  color: #404245;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .latest-book-meta section strong {
-  color: #dbeafe;
+  color: #0a0a0a;
   font-size: 12px;
   overflow-wrap: anywhere;
 }
@@ -250,18 +250,18 @@
 }
 
 .latest-card-index {
-  color: #16c7a0;
+  color: #0a0a0a;
   font-weight: 800;
 }
 
 .latest-empty {
   text-align: center;
   padding: 90px 20px;
-  color: #94a3b8;
+  color: #191b1d;
 }
 
 .latest-empty svg {
-  color: #16c7a0;
+  color: #0e0e0e;
   margin-bottom: 15px;
 }
 
@@ -368,7 +368,7 @@
   padding: 13px 17px;
   margin-top: 12px;
 
-  background: linear-gradient(110deg, #16c7a0, #0e9f85);
+  background: linear-gradient(110deg, #01a004, #04d507);
 
   color: #06140f;
   border-radius: 10px;

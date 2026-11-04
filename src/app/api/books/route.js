@@ -46,7 +46,7 @@ export async function POST(request) {
     }
 
     // 5. Send data to Express backend
-    const response = await fetch(`${API_URL}/AddBook`, {
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/AddBook`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -32,14 +32,11 @@ export default function AllBooksPageUI({ books = [] }) {
   };
 
   return (
-    <section className="latest-books-section">
+    <section className="latest-books-section ">
       <div className="latest-books-container">
         {/* Header */}
         <div className="latest-books-heading">
-          <div className="latest-heading-label">
-            <BookOpen size={16} />
-            BOOKNOOK LIBRARY
-          </div>
+          <div className="latest-heading-label ">BOOKNOOK LIBRARY</div>
 
           <h2>
             Latest <strong>Books</strong>
@@ -67,7 +64,7 @@ export default function AllBooksPageUI({ books = [] }) {
 
         {/* Books */}
         {sortedBooks.length > 0 ? (
-          <div className="latest-books-grid">
+          <div className="latest-books-grid p-30 ">
             {sortedBooks.map((book, index) => (
               <article
                 className="latest-book-card"
@@ -160,10 +157,7 @@ export default function AllBooksPageUI({ books = [] }) {
                   </Link>
                   {/* Footer */}
                   <div className="latest-card-footer">
-                    <span>
-                      <BookOpen size={15} />
-                      BookNook Collection
-                    </span>
+                    <span>BookNook Collection</span>
 
                     <span className="latest-card-index">
                       {String(index + 1).padStart(2, "0")}

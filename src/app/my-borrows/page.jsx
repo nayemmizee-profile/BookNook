@@ -1,11 +1,46 @@
 "use client";
 
-export default function MyBorrowsPage() {
-  return (
-    <main className="min-h-screen p-10">
-      <h1 className="text-3xl font-bold">My Borrows</h1>
+import { useEffect, useState } from "react";
 
-      <p className="mt-4">Your borrowed books will appear here.</p>
-    </main>
+export default function MyBorrowPage() {
+  const [borrowedBooks, setBorrowedBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMyBorrow = async () => {
+      try {
+        const res = await fetch("/api/my-borrow");
+        const data = await res.json();
+
+        if (!res.ok) {
+          throw new Error(data.message);
+        }
+
+        setBorrowedBooks(data.borrowedBooks);
+      } catch (error) {
+        console.error("MyBorrow Error:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchMyBorrow();
+  }, []);
+
+  if (loading) return <p>Loading Borrowed Books...</p>;
+
+  return (
+    <div>
+      <h1></h1>
+
+      <p> {borrowedBooks.length}</p>
+
+      {borrowedBooks.map((book) => (
+        <div key={book._id}>
+          <h3>{book.title}</h3>
+          <p>{book.author}</p>
+        </div>
+      ))}
+    </div>
   );
 }
