@@ -58,7 +58,7 @@ export default function BorrowButton({ book }) {
     try {
       setLoading(true);
 
-      const response = await fetch("/api/borrow", {
+      const res = await fetch("/api/borrow", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -69,9 +69,23 @@ export default function BorrowButton({ book }) {
         }),
       });
 
-      const result = await response.json();
+      // Read response only once
+      const responseText = await res.text();
 
-      if (!response.ok) {
+      console.log("Status:", res.status);
+      console.log("URL:", res.url);
+      console.log("Response:", responseText);
+
+      let result;
+
+      try {
+        result = JSON.parse(responseText);
+      } catch {
+        console.error("Invalid API response:", responseText);
+        throw new Error(`Invalid server response. Status: ${res.status}`);
+      }
+
+      if (!res.ok) {
         throw new Error(result.message || "Failed to borrow this book.");
       }
 

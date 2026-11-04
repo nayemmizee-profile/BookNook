@@ -27,16 +27,19 @@ export async function PATCH(request) {
     }
 
     // 3. Send request to Express
-    const response = await fetch(`${process.env.API_URL}/ReturnBook`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "x-user-id": session.user.id,
-        "x-internal-secret": process.env.INTERNAL_API_SECRET,
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/ReturnBook`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "x-user-id": session.user.id,
+          "x-internal-secret": process.env.INTERNAL_API_SECRET,
+        },
+        body: JSON.stringify({ borrowId }),
+        cache: "no-store",
       },
-      body: JSON.stringify({ borrowId }),
-      cache: "no-store",
-    });
+    );
 
     const data = await response.json();
 

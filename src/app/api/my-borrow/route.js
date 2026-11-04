@@ -19,14 +19,17 @@ export async function GET() {
     const userId = session.user.id;
 
     // 2. Fetch from Express Backend
-    const response = await fetch(`${process.env.API_URL}/MyBorrow`, {
-      method: "GET",
-      headers: {
-        "x-internal-secret": process.env.INTERNAL_API_SECRET,
-        "x-user-id": userId,
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/MyBorrow`,
+      {
+        method: "GET",
+        headers: {
+          "x-internal-secret": process.env.INTERNAL_API_SECRET,
+          "x-user-id": userId,
+        },
+        cache: "no-store",
       },
-      cache: "no-store",
-    });
+    );
 
     // 3. Backend Response
     const result = await response.json();
@@ -40,7 +43,7 @@ export async function GET() {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to fetch MyBorrow",
+        message: error.message || "Failed to fetch MyBorrow",
       },
       { status: 500 },
     );
