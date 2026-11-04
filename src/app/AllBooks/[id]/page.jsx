@@ -66,6 +66,7 @@ async function BookDetailsContent({ params }) {
                 sizes="(max-width: 768px) 90vw, 450px"
                 className="details-book-image"
               />
+
               <span className="details-category-badge">{book.category}</span>
             </div>
 
@@ -96,6 +97,7 @@ async function BookDetailsContent({ params }) {
                 <div className="info-icon">
                   <Library size={19} />
                 </div>
+
                 <div>
                   <span>Category</span>
                   <strong>{book.category}</strong>
@@ -106,6 +108,7 @@ async function BookDetailsContent({ params }) {
                 <div className="info-icon">
                   <BookOpen size={19} />
                 </div>
+
                 <div>
                   <span>Total Copies</span>
                   <strong>{book.totalCopies}</strong>
@@ -130,6 +133,7 @@ async function BookDetailsContent({ params }) {
 
                 <div className="added-user-details">
                   <strong>{book.userName}</strong>
+
                   <span>
                     <Mail size={14} />
                     {book.userEmail}
@@ -142,6 +146,7 @@ async function BookDetailsContent({ params }) {
             {book.createdAt && (
               <div className="book-created-date">
                 <CalendarDays size={17} />
+
                 <span>
                   Added on{" "}
                   {new Date(book.createdAt).toLocaleDateString("en-US", {
@@ -154,13 +159,14 @@ async function BookDetailsContent({ params }) {
             )}
 
             {/* Borrow Button */}
-            <BorrowButton bookId={book._id} />
+            <BorrowButton book={book} />
           </div>
         </section>
 
         {/* Bottom Note */}
         <div className="details-footer-note">
           <BookOpen size={18} />
+
           <p>
             Every book opens a new world. Choose your next adventure and start
             reading today.

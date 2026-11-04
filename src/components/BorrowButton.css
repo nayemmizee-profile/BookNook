@@ -1,0 +1,244 @@
+/* Borrow Modal */
+.borrow-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 25, 30, 0.7);
+  backdrop-filter: blur(7px);
+  animation: borrowFadeIn 0.25s ease;
+}
+
+.borrow-modal {
+  width: 100%;
+  max-width: 510px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  border: 1px solid #359fa0;
+  border-radius: 20px;
+  background: #f8ffff;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+  animation: borrowSlideUp 0.3s ease;
+}
+
+.borrow-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.borrow-modal-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #237477;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.borrow-modal-header h2 {
+  margin: 10px 0 5px;
+  color: #142d32;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.borrow-modal-header p {
+  color: #64777b;
+  font-size: 13px;
+}
+
+.borrow-modal-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: #e8f2f2;
+  color: #142d32;
+  cursor: pointer;
+}
+
+.borrow-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 17px;
+}
+
+.borrow-form-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #29474b;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.borrow-form-group input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid #c9dada;
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: #142d32;
+  font-size: 13px;
+}
+
+.borrow-form-group input:focus {
+  border-color: #359fa0;
+  box-shadow: 0 0 0 3px rgba(53, 159, 160, 0.12);
+}
+
+.borrow-form-group input[readonly] {
+  background: #edf5f5;
+  color: #52696d;
+  cursor: not-allowed;
+}
+
+.borrow-book-preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 22px 0;
+  padding: 12px;
+  border: 1px solid #d6e7e7;
+  border-radius: 12px;
+  background: #edf7f7;
+}
+
+.borrow-book-preview img {
+  width: 52px;
+  height: 65px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.borrow-book-preview div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.borrow-book-preview span {
+  color: #237477;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.borrow-book-preview strong {
+  color: #142d32;
+  font-size: 14px;
+}
+
+.borrow-date-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.borrow-form-error,
+.borrow-form-success {
+  margin: 12px 0;
+  padding: 11px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.borrow-form-error {
+  background: #fff0f0;
+  color: #b42318;
+}
+
+.borrow-form-success {
+  background: #e9f8ef;
+  color: #187044;
+}
+
+.confirm-borrow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #237477;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.confirm-borrow-btn:hover {
+  background: #142d32;
+  transform: translateY(-2px);
+}
+
+.confirm-borrow-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.borrow-modal-message {
+  padding: 20px 0;
+  color: #52696d;
+  text-align: center;
+}
+
+.borrow-modal-message a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #237477;
+  font-weight: 700;
+}
+
+@keyframes borrowFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes borrowSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 480px) {
+  .borrow-modal {
+    padding: 20px;
+  }
+
+  .borrow-date-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .borrow-modal-header h2 {
+    font-size: 21px;
+  }
+}

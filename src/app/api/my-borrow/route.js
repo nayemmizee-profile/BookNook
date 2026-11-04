@@ -4,30 +4,31 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    // Verify Session
+    // 1. Verify Session
     const session = await auth.api.getSession({
       headers: await headers(),
     });
 
     if (!session?.user) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+      return NextResponse.json(
+        { success: false, message: "Unauthorized" },
+        { status: 401 },
+      );
     }
 
     const userId = session.user.id;
 
-    // Fetch from Express Backend
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/MyBorrow`,
-      {
-        method: "GET",
-        headers: {
-          "x-internal-secret": process.env.INTERNAL_API_SECRET,
-          "x-user-id": userId,
-        },
-        cache: "no-store",
+    // 2. Fetch from Express Backend
+    const response = await fetch(`${process.env.API_URL}/MyBorrow`, {
+      method: "GET",
+      headers: {
+        "x-internal-secret": process.env.INTERNAL_API_SECRET,
+        "x-user-id": userId,
       },
-    );
+      cache: "no-store",
+    });
 
+    // 3. Backend Response
     const result = await response.json();
 
     return NextResponse.json(result, {
