@@ -60,7 +60,7 @@ export default function MyBorrowPage() {
     try {
       setReturningId(borrowId);
 
-      const res = await fetch("/api/return-book", {
+      const res = await fetch("/api/my-borrow/return-book", {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -68,11 +68,24 @@ export default function MyBorrowPage() {
         body: JSON.stringify({ borrowId }),
       });
 
-      const data = await res.json();
+      const responseText = await res.text();
+
+      console.log("Status:", res.status);
+      console.log("Response:", responseText);
+
+      let data;
+
+      try {
+        data = JSON.parse(responseText);
+      } catch {
+        throw new Error(`Invalid server response. Status: ${res.status}`);
+      }
 
       if (!res.ok) {
-        throw new Error(data.message || "Failed to return book");
+        throw new Error(data.message || "Failed to return book.");
       }
+
+      console.log(data.message);
 
       // Remove returned book from active list
       setBorrowedBooks((prev) => prev.filter((book) => book._id !== borrowId));
