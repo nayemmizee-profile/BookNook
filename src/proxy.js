@@ -1,5 +1,6 @@
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
+
 import { auth } from "./lib/auth";
 
 // This function can be marked `async` if using `await` inside
@@ -9,7 +10,7 @@ export async function proxy(request) {
   });
   const user = session?.user;
   if (!user) {
-    return NextResponse.redirect(new URL("/login", request.url));
+    return NextResponse.redirect(new URL("/access-denied", request.url));
   }
   return NextResponse.next();
 }
@@ -18,5 +19,11 @@ export async function proxy(request) {
 // export default function proxy(request: NextRequest) { ... }
 
 export const config = {
-  matcher: ["/AllBooks/:id*"],
+  matcher: [
+    "/AllBooks/:id*",
+    "/my-books",
+    "/my-borrows",
+    "/profile",
+    "/add-books",
+  ],
 };

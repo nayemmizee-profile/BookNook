@@ -11,7 +11,10 @@ import {
 } from "lucide-react";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import "./Footer.css";
+import "./FooterYear.jsx";
+import FooterYear from "./FooterYear.jsx";
 
 const quickLinks = [
   { name: "Home", href: "/" },
@@ -28,8 +31,6 @@ const categories = [
 ];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="booknook-footer">
       {/* TOP DECORATIVE LINE */}
@@ -130,7 +131,12 @@ export default function Footer() {
         {/* FOOTER BOTTOM */}
         <div className="footer-bottom">
           <p>
-            © {currentYear} <strong>BookNook.</strong> All rights reserved.
+            ©{" "}
+            <Suspense fallback="2026">
+              <FooterYear />
+            </Suspense>{" "}
+            <strong>BookNook.</strong>
+            All rights reserved.
           </p>
 
           <div className="footer-bottom-center">

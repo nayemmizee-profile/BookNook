@@ -124,7 +124,7 @@ export default function AddBookForm({ user }) {
   };
 
   return (
-    <section className="overflow-hidden rounded-3xl border border-[#D9D0BE] bg-white shadow-xl">
+    <section className="overflow-hidden rounded-3xl border border-[#D9D0BE] bg-white text-[#102A43] shadow-xl">
       {/* Header */}
       <div className="bg-[#102A43] px-6 py-10 text-white sm:px-10">
         <button
@@ -214,7 +214,7 @@ export default function AddBookForm({ user }) {
                 placeholder="Enter book title"
                 required
                 maxLength={150}
-                className="w-full rounded-xl border border-[#DDD5C7] px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
+                className="w-full rounded-xl border border-[#DDD5C7] text-[#102A43] bg-white placeholder:text-gray-400 px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
               />
             </div>
 
@@ -232,7 +232,7 @@ export default function AddBookForm({ user }) {
                 placeholder="Enter author name"
                 required
                 maxLength={100}
-                className="w-full rounded-xl border border-[#DDD5C7] px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
+                className="w-full rounded-xl border border-[#DDD5C7] text-[#102A43] bg-white placeholder:text-gray-400 px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
               />
             </div>
 
@@ -247,7 +247,7 @@ export default function AddBookForm({ user }) {
                 value={formData.category}
                 onChange={handleChange}
                 required
-                className="w-full rounded-xl border border-[#DDD5C7] bg-white px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
+                className="w-full rounded-xl border border-[#DDD5C7] text-[#102A43] bg-white placeholder:text-gray-400 bg-white px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
               >
                 <option value="">Select category</option>
                 <option value="Fiction">Fiction</option>
@@ -273,7 +273,7 @@ export default function AddBookForm({ user }) {
                 min="1"
                 step="1"
                 required
-                className="w-full rounded-xl border border-[#DDD5C7] px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
+                className="w-full rounded-xl border border-[#DDD5C7] text-[#102A43] bg-white placeholder:text-gray-400 px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
               />
 
               <p className="mt-2 text-xs text-gray-500">
@@ -300,7 +300,7 @@ export default function AddBookForm({ user }) {
                   onChange={handleChange}
                   placeholder="https://example.com/book-cover.jpg"
                   required
-                  className="w-full rounded-xl border border-[#DDD5C7] py-3 pl-12 pr-4 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
+                  className="w-full rounded-xl text-[#102A43] bg-white placeholder:text-gray-400 border border-[#DDD5C7] py-3 pl-12 pr-4 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
                 />
               </div>
 
@@ -347,7 +347,7 @@ export default function AddBookForm({ user }) {
                 rows={5}
                 required
                 maxLength={1000}
-                className="w-full resize-none rounded-xl border border-[#DDD5C7] px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
+                className="w-full text-[#102A43] bg-white placeholder:text-gray-400 resize-none rounded-xl border border-[#DDD5C7] px-4 py-3 outline-none transition focus:border-[#B08A42] focus:ring-2 focus:ring-[#D9B56D]/20"
               />
 
               <p className="mt-1 text-right text-xs text-gray-400">
